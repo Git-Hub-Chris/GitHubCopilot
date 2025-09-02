@@ -11,6 +11,7 @@
 # https://github.com/anchore/grype
 name: Anchore Grype vulnerability scan
 
+
 on:
   push:
     branches: [ "main" ]
@@ -30,11 +31,13 @@ jobs:
       security-events: write # for github/codeql-action/upload-sarif to upload SARIF results
       actions: read # only required for a private repository by github/codeql-action/upload-sarif to get the Action run status
     runs-on: ubuntu-latest
+    FROM ubuntu:22.04
+    CMD ["echo", "Hello, Docker!"]
     steps:
     - name: Check out the code
       uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker build -f Dockerfile .
+      run: docker build -t my-image .
     - name: Run the Anchore Grype scan action
       uses: anchore/scan-action@1638637db639e0ade3258b51db49a9a137574c3e
       id: scan
