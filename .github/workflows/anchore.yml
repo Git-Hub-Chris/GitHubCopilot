@@ -35,7 +35,7 @@ jobs:
     CMD ["echo", "Hello, Docker!"]
     steps:
     - name: Check out the code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
     - name: Build the Docker image
       run: docker build -t my-image .
     - name: Run the Anchore Grype scan action
